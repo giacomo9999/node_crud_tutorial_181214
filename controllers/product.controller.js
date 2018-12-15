@@ -26,7 +26,24 @@ exports.product_details = function(req, res) {
   Product.findById(req.params.id, function(err, product) {
     if (err) return next(err);
     res.send(product);
-    console.log('Product sent.')
+    console.log("Product sent.");
   });
 };
 
+exports.product_update = function(req, res) {
+  Product.findOneAndUpdate(req.params.id, { $set: req.body }, function(
+    err,
+    product
+  ) {
+    if (err) return next(err);
+    res.send("Product updated");
+  });
+};
+
+exports.product_delete = function(req, res) {
+  Product.findOneAndRemove(req.params.id, function(err, product) {
+    if (err) return next(err);
+    res.send(product);
+    console.log("Product deleted.");
+  });
+};
