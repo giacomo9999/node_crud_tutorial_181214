@@ -9,7 +9,7 @@ exports.jim = function(req, res) {
 };
 
 exports.product_create = function(req, res) {
-    // res.send("Product Creator here.")
+  // res.send("Product Creator here.")
   let product = new Product({
     name: req.body.name,
     price: req.body.price
@@ -18,6 +18,15 @@ exports.product_create = function(req, res) {
     if (err) {
       return next(err);
     }
-    res.send("Product created successfully-"+req.body.name);
+    res.send("Product created successfully-" + req.body.name);
   });
 };
+
+exports.product_details = function(req, res) {
+  Product.findById(req.params.id, function(err, product) {
+    if (err) return next(err);
+    res.send(product);
+    console.log('Product sent.')
+  });
+};
+
