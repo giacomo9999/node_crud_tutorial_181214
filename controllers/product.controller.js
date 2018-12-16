@@ -18,7 +18,8 @@ exports.product_create = function(req, res) {
     if (err) {
       return next(err);
     }
-    res.send("Product created successfully-" + req.body.name);
+    res.send("Product created successfully- " + req.body.name);
+    console.log("Product created successfully- " + req.body.name);
   });
 };
 
@@ -37,6 +38,7 @@ exports.product_update = function(req, res) {
   ) {
     if (err) return next(err);
     res.send("Product updated");
+    console.log("Product updated.");
   });
 };
 
